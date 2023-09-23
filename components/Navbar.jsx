@@ -1,6 +1,21 @@
 import Link from 'next/link';
 
 export default function Navbar() {
+  const menu = [
+    {
+      name: 'Now Playing',
+      path: '/movie/now-playing',
+    },
+    {
+      name: 'Popular',
+      path: '/movie/popular',
+    },
+    {
+      name: 'Top Rated',
+      path: '/movie/top-rated',
+    },
+  ];
+
   return (
     <header className="bg-gray-800/50">
       <nav
@@ -16,24 +31,15 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex lg:gap-x-10 tracking-widest">
-          <Link
-            href="/movie"
-            className="text-sm font-medium hover:text-yellow-400 transition duration-200"
-          >
-            Now Playing
-          </Link>
-          <Link
-            href="/movie"
-            className="text-sm font-medium hover:text-yellow-400 transition duration-200"
-          >
-            Popular
-          </Link>
-          <Link
-            href="/movie"
-            className="text-sm font-medium hover:text-yellow-400 transition duration-200"
-          >
-            Top Rated
-          </Link>
+          {menu.map((item) => (
+            <Link
+              href={item.path}
+              key={item.name}
+              className="text-sm font-medium hover:text-yellow-400 transition duration-200"
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>

@@ -12,12 +12,6 @@ export default function Detail({ params }) {
       retry: false,
       refetchOnWindowFocus: false,
       refetchOnMount: false,
-      onSuccess: (data) => {
-        console.log(data);
-        console.log(
-          `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${data.backdrop_path}`
-        );
-      },
     }
   );
 
