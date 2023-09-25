@@ -1,6 +1,9 @@
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const menu = [
     {
       name: 'Now Playing',
@@ -32,13 +35,21 @@ export default function Navbar() {
 
         <div className="hidden lg:flex lg:gap-x-10 tracking-widest">
           {menu.map((item) => (
-            <Link
-              href={item.path}
-              key={item.name}
-              className="text-sm font-medium hover:text-yellow-400 transition duration-200"
-            >
-              {item.name}
-            </Link>
+            <>
+              <Link
+                href={item.path}
+                key={item.name}
+                className={`text-sm font-medium hover:text-yellow-400 transition duration-200
+                ${
+                  pathname === item.path
+                    ? 'pb-1 border-b-2 border-yellow-500'
+                    : ''
+                }
+              `}
+              >
+                {item.name}
+              </Link>
+            </>
           ))}
         </div>
       </nav>
