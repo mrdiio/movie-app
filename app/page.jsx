@@ -14,9 +14,6 @@ export default function Home() {
     {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
-      onSuccess: (data) => {
-        console.log(data);
-      },
     }
   );
 

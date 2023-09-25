@@ -9,7 +9,7 @@ export default function MovieCard({ item, withScroll = false }) {
       className="flex pb-2 justify-center"
     >
       <div className="inline-block">
-        <div className={`max-w-lg ${withScroll ? 'w-40 sm:w-64' : null}`}>
+        <div className={`max-w-lg sm:w-64 ${withScroll ? 'w-40' : null}`}>
           <Image
             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
             alt={item.title}

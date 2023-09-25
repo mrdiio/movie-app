@@ -3,6 +3,7 @@ import { getMovieDetailService } from '@/services/getMovies';
 import { useQuery } from 'react-query';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Cast from './Cast';
 
 export default function MovieDetail({ id }) {
   const { data, isError, isLoading } = useQuery(
@@ -43,33 +44,39 @@ export default function MovieDetail({ id }) {
                       alt={data?.title}
                       width={300}
                       height={450}
-                      className="object-cover rounded-md border border-gray-700 w-60"
+                      className="bg-cover rounded-md border border-gray-700 w-60"
                     />
                   </div>
                 </div>
                 <div className={`sm:col-span-9`}>
                   <div className="hidden sm:flex justify-center items-center h-full">
-                    <div>
-                      <h1 className="text-4xl font-bold text-white">
-                        {data?.title}
-                      </h1>
+                    <div className="flex flex-col gap-2">
+                      <div className="text-4xl  text-white">
+                        <span className="font-semibold">{data?.title} </span>
+                        <span className="">
+                          ({data?.release_date?.slice(0, 4)})
+                        </span>
+                      </div>
                       <div className="flex flex-row items-center">
-                        <p className="text-white font-semibold text-xl">
-                          {data?.vote_average}
+                        <p className="text-white font-medium text-base bg-yellow-500 px-3  rounded-xl">
+                          {data?.runtime} min
                         </p>
                         <p className="text-white font-semibold text-xl mx-2">
                           •
                         </p>
-                        <p className="text-white font-semibold text-xl">
-                          {data?.release_date}
+                        <p className="text-white font-normal text-base">
+                          {data.genres.map((genre) => genre.name).join(', ')}
                         </p>
                       </div>
-                      <p className="text-white font-semibold text-xl">
-                        {data?.tagline}
+                      <p className="text-white font-thin text-base italic">
+                        &ldquo;{data?.tagline}&rdquo;
                       </p>
-                      <p className="text-white font-semibold text-xl">
-                        {data?.overview}
-                      </p>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xl">Overview</span>
+                        <p className="text-white font-thin text-base leading-relaxed">
+                          {data?.overview}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -77,28 +84,35 @@ export default function MovieDetail({ id }) {
             </div>
           </div>
 
-          <div className="container mx-auto p-8">
+          <div className="flex sm:hidden container mx-auto p-8">
             <div className="flex sm:hidden justify-center items-center h-full">
-              <div>
-                <h1 className="text-4xl font-bold text-white">{data?.title}</h1>
-                <div className="flex flex-row items-center">
-                  <p className="text-white font-semibold text-xl">
-                    {data?.vote_average}
+              <div className="flex flex-col gap-2">
+                <div className="text-4xl  text-white">
+                  <span className="font-semibold">{data?.title} </span>
+                  <span className="">({data?.release_date?.slice(0, 4)})</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-white font-medium text-base bg-yellow-500 px-3 rounded-xl w-fit">
+                    {data?.runtime} min
                   </p>
-                  <p className="text-white font-semibold text-xl mx-2">•</p>
-                  <p className="text-white font-semibold text-xl">
-                    {data?.release_date}
+                  <p className="text-white font-normal text-base">
+                    {data.genres.map((genre) => genre.name).join(', ')}
                   </p>
                 </div>
-                <p className="text-white font-semibold text-xl">
-                  {data?.tagline}
+                <p className="text-white font-thin text-base italic py-3">
+                  &ldquo;{data?.tagline}&rdquo;
                 </p>
-                <p className="text-white font-semibold text-xl">
-                  {data?.overview}
-                </p>
+                <div className="flex flex-col gap-1">
+                  <span className="text-xl">Overview</span>
+                  <p className="text-white font-thin text-base leading-relaxed">
+                    {data?.overview}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
+          <Cast id={id} />
         </>
       )}
     </>

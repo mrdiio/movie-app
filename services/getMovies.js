@@ -29,3 +29,8 @@ export const getSearchMovieService = async (page, q) => {
   const res = await apiClient.get(`/search/movie?page=${page}&query=${q}`);
   return res.data;
 };
+
+export const getMovieCreditService = async (id) => {
+  const res = await apiClient.get(`/movie/${id}/credits`);
+  return res.data;
+};
