@@ -1,9 +1,9 @@
-'use client';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+'use client'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const menu = [
     {
       name: 'Now Playing',
@@ -17,7 +17,7 @@ export default function Navbar() {
       name: 'Top Rated',
       path: '/movie/top-rated',
     },
-  ];
+  ]
 
   return (
     <header className="bg-gray-800/50">
@@ -35,24 +35,22 @@ export default function Navbar() {
 
         <div className="hidden lg:flex lg:gap-x-10 tracking-widest">
           {menu.map((item) => (
-            <>
-              <Link
-                href={item.path}
-                key={item.name}
-                className={`text-sm font-medium hover:text-yellow-400 transition duration-200
+            <Link
+              href={item.path}
+              key={item.name}
+              className={`text-sm font-medium hover:text-yellow-400 transition duration-200
                 ${
                   pathname === item.path
                     ? 'pb-1 border-b-2 border-yellow-500'
                     : ''
                 }
               `}
-              >
-                {item.name}
-              </Link>
-            </>
+            >
+              {item.name}
+            </Link>
           ))}
         </div>
       </nav>
     </header>
-  );
+  )
 }
