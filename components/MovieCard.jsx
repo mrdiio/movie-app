@@ -1,13 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function MovieCard({ item, withScroll = false }) {
   return (
-    <Link
-      href={`/movie/${item.id}`}
-      key={item.id}
-      className="flex pb-2 justify-center"
-    >
+    <div key={item.id} className="flex pb-2 justify-center">
       <div className="inline-block">
         <div className={`max-w-lg sm:w-64 ${withScroll ? 'w-40' : null}`}>
           <Image
@@ -21,10 +17,12 @@ export default function MovieCard({ item, withScroll = false }) {
             }`}
           />
           <div className="py-2 px-1">
-            <span className="text-lg font-semibold">{item.title}</span>
+            <Link href={`/movie/${item.id}`} className="text-lg font-semibold">
+              {item.title}
+            </Link>
           </div>
         </div>
       </div>
-    </Link>
-  );
+    </div>
+  )
 }
