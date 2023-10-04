@@ -6,6 +6,8 @@ import SearchForm from './components/SearchForm'
 import MovieCard from '@/components/MovieCard'
 import MovieCardSkeleton from '@/components/MovieCardSkeleton'
 import Slider from 'react-slick'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   const [nav1, setNav1] = useState()
@@ -25,6 +27,48 @@ export default function Home() {
     <div className="flex justify-center p-4">
       <div className="container">
         <div className="py-6">
+          <div className="grid grid-cols-4 gap-4 py-2">
+            <div className="group relative inline-block ">
+              <div className="max-w-lg">
+                <Image
+                  src="https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"
+                  alt="1"
+                  width={300}
+                  height={400}
+                  className="relative bg-cover"
+                />
+
+                <div className=" absolute bg-gray-900 rounded-b-md w-full opacity-0 flex p-2 flex-col gap-3 group-hover:opacity-100">
+                  <div>
+                    <Button>Detail</Button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"></div>
+              <div className="absolute bottom-0 p-3">Title</div>
+            </div>
+
+            <div className="group relative items-center rounded-md justify-center hover:scale-110 hover:slide-out-to-bottom-20">
+              <div className="max-w-lg">
+                <Image
+                  src="https://image.tmdb.org/t/p/w500/mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg"
+                  alt="1"
+                  width={300}
+                  height={400}
+                  className="w-full bg-cover rounded-t-md"
+                />
+
+                <div className="absolute bg-gray-900 rounded-b-md w-full opacity-0 flex p-2 flex-col gap-3 group-hover:opacity-100 delay-300 duration-75">
+                  <div>Title</div>
+                  <div>
+                    <Button>Watch Now</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* <h2> Single Item</h2>
           <Slider
             className="text-center"
@@ -60,7 +104,7 @@ export default function Home() {
               <h3>8</h3>
             </div>
           </Slider> */}
-          <Slider
+          {/* <Slider
             className="text-center"
             // asNavFor={nav1}
             slidesToShow={5}
@@ -73,9 +117,9 @@ export default function Home() {
             {data?.results.map((item) => (
               <MovieCard item={item} key={item.id} withScroll={true} />
             ))}
-          </Slider>
+          </Slider> */}
         </div>
-        <SearchForm />
+        {/* <SearchForm /> */}
         <div className="flex flex-col bg-gray-800 p-4 gap-5 rounded-md">
           <span className="text-2xl font-semibold">Popular Movies</span>
 
