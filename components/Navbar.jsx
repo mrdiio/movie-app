@@ -1,8 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ModeToggle } from './ModeToggle'
-import { Clapperboard } from 'lucide-react'
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -22,27 +20,20 @@ export default function Navbar() {
   ]
 
   return (
-    <header className="w-full">
+    <header className="bg-gray-800/50">
       <nav
         className="container mx-auto flex items-center justify-between py-3 px-4 sm:px-0"
         aria-label="Global"
       >
         <div className="flex">
           <Link href="/">
-            <div className="flex items-center gap-1 hover:text-yellow-400 transition duration-200">
-              <Clapperboard size={32} />
-              <span
-                className="text-2xl font-semibold 
-                bg-gradient-to-r dark:from-yellow-200 dark:to-yellow-600 from-yellow-900 to-yellow-300  bg-clip-text text-transparent
-              "
-              >
-                dMovie
-              </span>
-            </div>
+            <span className="text-2xl text-gray-200 tracking-wide hover:text-yellow-400 transition duration-200">
+              Movie App
+            </span>
           </Link>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-10 tracking-widest items-center">
+        <div className="hidden lg:flex lg:gap-x-10 tracking-widest">
           {menu.map((item) => (
             <Link
               href={item.path}
@@ -58,7 +49,6 @@ export default function Navbar() {
               {item.name}
             </Link>
           ))}
-          <ModeToggle />
         </div>
       </nav>
     </header>
