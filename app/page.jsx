@@ -28,14 +28,14 @@ export default function Home() {
       <div className="container">
         <div className="py-6">
           <div className="grid grid-cols-4 gap-4 py-2">
-            <div className="group relative ">
-              <div className="max-w-lg pb-[2px]">
+            <div className="group relative inline-block ">
+              <div className="max-w-lg">
                 <Image
                   src="https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"
                   alt="1"
                   width={300}
                   height={400}
-                  className="relative bg-cover rounded-md"
+                  className="relative bg-cover"
                 />
 
                 <div className=" absolute bg-gray-900 rounded-b-md w-full opacity-0 flex p-2 flex-col gap-3 group-hover:opacity-100">
@@ -45,7 +45,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-md absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"></div>
               <div className="absolute bottom-0 p-3">Title</div>
             </div>
 
